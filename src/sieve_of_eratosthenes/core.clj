@@ -11,10 +11,9 @@
   [max]
   (loop [coll (range 2 max)
          ret []]
-    (let [head (first coll)
-          f (partial divisible-by? head)]
+    (let [head (first coll)]
       (if (< (count ret) (Math/sqrt max))
-        (recur (filter f coll)
+        (recur (filter (partial divisible-by? head) coll)
                (conj ret head))
         (concat ret coll)))))
 
