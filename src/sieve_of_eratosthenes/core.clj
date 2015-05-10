@@ -1,8 +1,8 @@
 (ns sieve-of-eratosthenes.core
   (:gen-class))
 
-(defn divisible-by?
-  "Retun a function which tests if a number `n` is divisible by `d`"
+(defn not-divisible-by?
+  "Returns a function, which tests if a number `n` is not divisible by `d`"
   [d n]
   (not (= (mod n d) 0)))
 
@@ -13,7 +13,7 @@
          ret []]
     (let [head (first coll)]
       (if (< (count ret) (Math/sqrt max))
-        (recur (filter (partial divisible-by? head) coll)
+        (recur (filter (partial not-divisible-by? head) coll)
                (conj ret head))
         (concat ret coll)))))
 
