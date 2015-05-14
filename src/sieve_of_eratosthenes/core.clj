@@ -4,7 +4,7 @@
 (defn not-divisible-by?
   "Returns a function, which tests if a number `n` is not divisible by `d`"
   [d n]
-  (not (= (mod n d) 0)))
+  (> (mod n d) 0))
 
 (defn sieve
   "Get the prime numbers from 2 to `max` with the sieve of Eratosthenes algorithm."
@@ -15,7 +15,7 @@
       (if (< (count ret) (Math/sqrt max))
         (recur (filter (partial not-divisible-by? head) coll)
                (conj ret head))
-        (concat ret coll)))))
+        (into ret coll)))))
 
 (defn -main
   "Print all the prime numbers up to 100."
