@@ -15,7 +15,7 @@
       (if (< (count ret) (Math/sqrt max))
         (recur (filter (partial not-divisible-by? head) coll)
                (conj ret head))
-        (into ret coll)))))
+        (concat ret coll)))))
 
 (defn -main
   "Print all the prime numbers up to 100."
